@@ -28,7 +28,7 @@ export default function AddTopic() {
     }
 
     try {
-      const res = await fetch("/api/topics", {
+      const res = await fetch("api/topics", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -49,7 +49,7 @@ export default function AddTopic() {
   // Function to check if a topic with the same values already exists
   const checkExistingTopic = async ({ title, description, time, date }) => {
     try {
-      const res = await fetch("http://localhost:3000/api/topics");
+      const res = await fetch("/api/topics");
       const data = await res.json();
 
       const existingTopic = data.topics.find(
