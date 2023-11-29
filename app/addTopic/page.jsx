@@ -18,8 +18,6 @@ export default function AddTopic() {
       alert("Title and description are required.");
       return;
     }
-
-    // Check if a topic with the same values already exists
     const existingTopic = await checkExistingTopic({ title, description, time, date });
 
     if (existingTopic) {
@@ -28,7 +26,7 @@ export default function AddTopic() {
     }
 
     try {
-      const res = await fetch("api/topics", {
+      const res = await fetch(`/api/topics`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -46,7 +44,6 @@ export default function AddTopic() {
     }
   };
 
-  // Function to check if a topic with the same values already exists
   const checkExistingTopic = async ({ title, description, time, date }) => {
     try {
       const res = await fetch("/api/topics");
